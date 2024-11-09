@@ -1,13 +1,17 @@
 const express = require('express');
-const { register, login, getAllEmployees } = require('../controllers/employee.controller');
-const router = express.Router();
+const { register, login, getAllEmployees } = require('../controllers/Employee.controller');
+const { submitPOForm, getProductOptions } = require('../controllers/POFormController');
+const empRouter = express.Router();
 
 // Register route
-router.post('/register', register);
+empRouter.post('/register', register);
 
 // Login route
-router.post('/login', login);
+empRouter.post('/login', login);
 
-router.get('/all-employees', getAllEmployees);
+empRouter.get('/all-employees', getAllEmployees);
 
-module.exports = router;
+empRouter.post('/po-form', submitPOForm); // Submit PO Form
+empRouter.get('/products/:productId/options', getProductOptions);
+
+module.exports = empRouter;

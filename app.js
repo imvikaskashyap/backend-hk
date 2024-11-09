@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const employeeRoutes = require('./routes/employee.routes');
+const router = require('./routes/index');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -27,6 +27,6 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 
-app.use('/api/v1', employeeRoutes);
+app.use('/api/v1', router);
 
 module.exports = app;
